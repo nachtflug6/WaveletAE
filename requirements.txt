@@ -3,4 +3,5 @@ numpy
 tqdm
 matplotlib
 jupyter
-networkx
+pywavelets
+scipy

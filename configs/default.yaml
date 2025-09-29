@@ -1,0 +1,16 @@
+data:
+  T: 600
+  n: 4
+  sparsity: 0.5
+  r: 128
+  timing_mode: "gaussian"
+
+model:
+  m: 8
+  r: 128
+  D: 32
+
+train:
+  batch_size: 4
+  epochs: 50
+  lr: 0.001

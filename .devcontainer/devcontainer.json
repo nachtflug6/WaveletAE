@@ -1,32 +1,39 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+
+// .devcontainer/devcontainer.json
 {
-	"name": "Existing Dockerfile",
-	"build": {
-		// Sets the run context to one level up instead of the .devcontainer folder.
-		"context": "..",
-		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-		"dockerfile": "../Dockerfile"
-	},
-	"runArgs": [
-		"--gpus",
-		"all"
-	],
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-python.python",
-				"ms-azuretools.vscode-docker",
-				"ms-toolsai.jupyter",
-				"ms-python.autopep8"
-			],
-			"settings": {
-				"editor.defaultFormatter": "ms-python.autopep8",
-				"editor.formatOnSave": true
-			}
-		}
-	},
-	"features": {
+  "name": "WaveletAE",
+  	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {}
-	  }
+	  },
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+  "runArgs": [
+    "--gpus", "all"
+  ],
+  "workspaceFolder": "/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker",
+        "ms-python.autopep8"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true,
+        "python.defaultInterpreterPath": "/opt/conda/bin/python",
+        "python.terminal.activateEnvironment": false,
+        "jupyter.jupyterServerType": "local"
+      }
+    }
+  },
+
+  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt ipykernel"
 }
