@@ -3,5 +3,6 @@ numpy
 tqdm
 matplotlib
 jupyter
+ipykernel
 pywavelets
 scipy
